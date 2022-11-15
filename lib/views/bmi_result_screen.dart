@@ -129,7 +129,7 @@ class BmiResultScreen extends StatelessWidget {
             },
             child: Container(
               height: 60,
-              margin: EdgeInsets.all(15),
+              margin: const EdgeInsets.all(15),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(18),
                 color: const Color(0xFF517df6),
