@@ -18,15 +18,6 @@ class _BmiDataScreenState extends State<BmiDataScreen> {
   int umur = 27;
   String? gender; 
 
-  // double calculateBmi(){
-
-  //   double tinggiDalamMeter = tinggi/100;
-  //   final tinggiK = tinggiDalamMeter*tinggiDalamMeter;
-  //   final bmi = berat / tinggiK;
-
-  //   return bmi;
-  // }
-
   List<Widget> generateList(start, end){
     List<Widget> weights = [];
     for(var i = start; i < end; i++){
@@ -45,15 +36,12 @@ class _BmiDataScreenState extends State<BmiDataScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: primaryColor,
       appBar: AppBar(
         elevation: 0,
         title: const Text("BMI Kalkulator"),
       ),
       bottomNavigationBar: GestureDetector(
             onTap: (){
-              // print(calculateBmi());
-              // calculateBmi();
               final bmiCalculator = BmiCalculator(tinggi: tinggi, berat: berat);
               bmiCalculator.calculateBmi();
               
@@ -68,7 +56,7 @@ class _BmiDataScreenState extends State<BmiDataScreen> {
             },
             child: Container(
               height: 60,
-              margin: EdgeInsets.all(15),
+              margin: const EdgeInsets.all(15),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(18),
                 color: const Color(0xFF517df6),
@@ -85,7 +73,7 @@ class _BmiDataScreenState extends State<BmiDataScreen> {
             ),
           ),
       body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
             Row(
@@ -100,7 +88,7 @@ class _BmiDataScreenState extends State<BmiDataScreen> {
                     },
                     child: BmiCard(
                       borderColor: (
-                        gender=="male") ? Color(0xff517df6) : Colors.white,
+                        gender=="male") ? const Color(0xff517df6) : Colors.white,
                       child: Stack(
                         children: [
                           const Center(
@@ -117,7 +105,7 @@ class _BmiDataScreenState extends State<BmiDataScreen> {
                             top: 10,
                             child: Icon(
                               Icons.check_circle,
-                              color: (gender == "male") ? Color(0xff517df6) : Colors.white,
+                              color: (gender == "male") ? const Color(0xff517df6) : Colors.white,
                             ),
                           )
                         ],
@@ -135,11 +123,11 @@ class _BmiDataScreenState extends State<BmiDataScreen> {
                     },
                     child: BmiCard(
                       borderColor: (
-                        gender=="female") ? Color(0xff517df6) : Colors.white,
+                        gender=="female") ? const Color(0xff517df6) : Colors.white,
                       child: Stack(
                         children: [
-                          Center(
-                            child: const Padding(
+                          const Center(
+                            child: Padding(
                               padding: EdgeInsets.symmetric(vertical: 20.0,),
                               child: GenderIconText(
                                 icon: Icons.female, 
@@ -152,7 +140,7 @@ class _BmiDataScreenState extends State<BmiDataScreen> {
                             top: 10,
                             child: Icon(
                               Icons.check_circle,
-                              color: (gender == "female") ? Color(0xff517df6) : Colors.white,
+                              color: (gender == "female") ? const Color(0xff517df6) : Colors.white,
                             ),
                           )
                         ],
@@ -181,7 +169,7 @@ class _BmiDataScreenState extends State<BmiDataScreen> {
                           min: 80,
                           max: 200,
                           thumbColor: const Color(0xFF1BDAD0),
-                          activeColor: Color(0xFF1BDAD0),
+                          activeColor: const Color(0xFF1BDAD0),
                           onChanged: (value){
                             tinggi = value.toInt();
                             setState(() {
@@ -219,76 +207,72 @@ class _BmiDataScreenState extends State<BmiDataScreen> {
               ],
             ),
             const SizedBox(height: 30,),
-            Container(
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      // crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                        "Berat Badan",
-                        style: labelTextStyle,
-                      ),
-                        BmiCard(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                          Container(
-                            height: MediaQuery.of(context).size.height * 0.15,
-                            child: CupertinoPicker(
-                              scrollController: FixedExtentScrollController(
-                                initialItem: 30),
-                              itemExtent: 25, 
-                              magnification: 2,
-                              useMagnifier: true,
-                              onSelectedItemChanged: (val){
-                                // print(val);
-                                berat = val + 20;
-                              },
-                              children: generateList(20, 220),
-                             ),
-                          ),
-                        ]),
-                  ),
-                      ],
-                    )
-                  ),
-                  Expanded(
-                    child: Column(
-                      children: [
-                        Text(
-                        "Umur",
-                        style: labelTextStyle,
-                      ),
-                      
-                        BmiCard(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                          
-                          Container(
-                            height: MediaQuery.of(context).size.height * 0.15,
-                            child: CupertinoPicker(
-                              scrollController: FixedExtentScrollController(
-                                initialItem: 5),
-                              itemExtent: 25, 
-                              magnification: 2,
-                              useMagnifier: true,
-                              onSelectedItemChanged: (val){
-                                // print(val);
-                                berat = val + 20;
-                              },
-                              children: generateList(15, 90),
-                              ),
-                          ),
-                        ]),
-                  ),
-                      ],
-                    )
-                  ),
-                ],
-              )),
+            Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    children: [
+                      Text(
+                      "Berat Badan",
+                      style: labelTextStyle,
+                    ),
+                      BmiCard(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                        Container(
+                          height: MediaQuery.of(context).size.height * 0.15,
+                          child: CupertinoPicker(
+                            scrollController: FixedExtentScrollController(
+                              initialItem: 30),
+                            itemExtent: 25, 
+                            magnification: 2,
+                            useMagnifier: true,
+                            onSelectedItemChanged: (val){
+                              berat = val + 20;
+                            },
+                            children: generateList(20, 220),
+                           ),
+                        ),
+                      ]),
+                ),
+                    ],
+                  )
+                ),
+                Expanded(
+                  child: Column(
+                    children: [
+                      Text(
+                      "Umur",
+                      style: labelTextStyle,
+                    ),
+                    
+                      BmiCard(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                        
+                        Container(
+                          height: MediaQuery.of(context).size.height * 0.15,
+                          child: CupertinoPicker(
+                            scrollController: FixedExtentScrollController(
+                              initialItem: 5),
+                            itemExtent: 25, 
+                            magnification: 2,
+                            useMagnifier: true,
+                            onSelectedItemChanged: (val){
+                              berat = val + 20;
+                            },
+                            children: generateList(15, 90),
+                            ),
+                        ),
+                      ]),
+                ),
+                    ],
+                  )
+                ),
+              ],
+            ),
             
           ]),
       ),
@@ -313,7 +297,7 @@ class BmiCard extends StatelessWidget {
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            offset: Offset(-2,2),
+            offset: const Offset(-2,2),
             blurRadius: 10,
             color: Colors.black.withOpacity(0.15),
           )
