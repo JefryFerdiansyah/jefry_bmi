@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 const Color primaryColor =  Color(0xFF22577a);
 TextStyle labelTextStyle = const TextStyle(
   fontSize: 18,
-  color: Colors.white // Color(0xfff8f7f2),
+  color: primaryColor // Color(0xfff8f7f2),
 );
 
 TextStyle numberTextStyle = const TextStyle(

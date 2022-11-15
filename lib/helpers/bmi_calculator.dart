@@ -8,44 +8,42 @@ class BmiCalculator{
   String? bmiDescription;
 
   BmiCalculator({required this.tinggi, required this.berat});
-  BmiCalculator.fromBmiValue(this.bmi){
-    //this.bmi = bmi;
-  }
+  BmiCalculator.fromBmiValue(this.bmi);
 
   double calculateBmi(){
 
     double tinggiDalamMeter = tinggi! / 100;
-    final tinggiK = tinggiDalamMeter * tinggiDalamMeter;
-    final bmi = berat! / tinggiK;
+    final tinggiK = (tinggiDalamMeter * tinggiDalamMeter);
+    bmi = berat! / tinggiK;
 
-    return bmi;
+    return bmi!;
   }
-  String determineBmiCategory(double bmiValue){
+  String determineBmiCategory(){
     String category = "";
-    if (bmiValue < 16.0){
+    if (bmi! < 16.0){
       category = underweightSevere;
-    }else if(bmiValue < 17.0){
+    }else if(bmi! < 17.0){
       category = underweightModerate;
-    }else if(bmiValue < 18.5){
+    }else if(bmi! < 18.5){
       category = underweightMild;
-    }else if(bmiValue < 25){
+    }else if(bmi! < 25){
       category = normal;
-    }else if(bmiValue < 30){
+    }else if(bmi! < 30){
       category = overweight;
-    }else if(bmiValue < 35){
+    }else if(bmi! < 35){
       category = obeseI;
-    }else if(bmiValue < 40){
+    }else if(bmi! < 40){
       category = obeseII;
-    }else if(bmiValue >= 40){
+    }else if(bmi! >= 40){
       category = obeseIII;
     }
     bmiCategory = category;
     return bmiCategory!;
   }
 
-  String getHealRiskDescription(String categoryName){
+  String getHealRiskDescription(){
     String desc = "";
-    switch(categoryName){
+    switch(bmiCategory){
       case underweightSevere:
       case underweightModerate:
       case underweightMild:
@@ -66,6 +64,6 @@ class BmiCalculator{
       default:
     }
     bmiDescription = desc;
-    return bmiDescription!;
+    return desc;
   }
 }
