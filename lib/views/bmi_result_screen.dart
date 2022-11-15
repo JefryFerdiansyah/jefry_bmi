@@ -128,8 +128,12 @@ class BmiResultScreen extends StatelessWidget {
               Navigator.pop(context);
             },
             child: Container(
-              height: 80,
-              color: const Color(0xFF517df6),
+              height: 60,
+              margin: EdgeInsets.all(15),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(18),
+                color: const Color(0xFF517df6),
+              ),
               child: const Center(child: 
                 Text("Hitung Ulang",
                   style: TextStyle(
